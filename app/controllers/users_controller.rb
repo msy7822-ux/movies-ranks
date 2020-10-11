@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     # 新規ユーザーの作成のためのからのオブジェクトの作成
     @user = User.new()
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = '新規登録が完了しました'
-      redirect_to root_path
+      redirect_to user_url(@user)
     else
       # @user = User.new(user_params) #newで入力した値を代入
       render 'new'
@@ -27,6 +31,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
