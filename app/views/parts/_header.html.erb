@@ -1,0 +1,19 @@
+<header class="bg-light"> 
+    <ul class="nav mb-5 p-2">
+        <li class="nav-item">
+            <%= link_to users_path, class: 'nav-link text-muted' do %>
+                <%= icon('fas', 'video') %> 映画のランキング
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to root_path, class: 'nav-link text-muted' do %>
+                <%= icon('fas', 'home') %> ホームに戻る
+            <% end %>
+        </li>
+        <li class="nav-item">
+            <%= link_to '#', class: 'nav-link text-muted' do %>
+                <%= icon('fas', 'vote-yea') %> 投票する
+            <% end %>
+        </li>
+    </ul>
+</header>
