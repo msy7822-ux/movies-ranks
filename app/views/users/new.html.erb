@@ -1,23 +1,33 @@
 <%# titleタグの設定 %>
 <%= provide(:title, "新規登録") %>
 
-<%= form_with scope: :user, url: signup_path, local: true do |f| %>
-    <%# エラーが発生した際に表示する %>
-    <% if @user.errors.any? %>
+
+<%# エラーが発生した際に表示する %>
+<% if @user.errors.any? %>
+    <%= content_tag :ul do %>
         <% @user.errors.full_messages.each do |message| %>
-            <%= message %>
+            <%= content_tag :li, message, class: 'text-danger' %>
         <% end %>
     <% end %>
-
-    <div class="form-group">
-        <%= f.label :name, '名前' %>
-        <%= f.text_field :name , class: 'form-control' %>
-    </div>
-
-    <div class='form-group'>
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.text_field :email , class: 'form-control' %>
-    </div>
-
-    <%= f.submit '新規登録', class: "btn btn-primary" %>
 <% end %>
+
+<div class="form bg-light p-5">
+    <%= form_with scope: :user, url: signup_path, local: true do |f| %>
+
+        <div class="form-group">
+            <%= f.label :name do %>
+                名前 <%= content_tag :span, '必須', class: 'bg-danger text-white rounded p-1 ml-1' %>
+            <% end %>
+            <%= f.text_field :name , class: 'form-control', placeholder: '例：山田太郎' %>
+        </div>
+
+        <div class='form-group'>
+            <%= f.label :email do %>
+                メールアドレス <%= content_tag :span, '必須', class: 'bg-danger text-white rounded p-1 ml-1' %>
+            <% end %>
+            <%= f.text_field :email , class: 'form-control', placeholder: '例：yamadatarou@example.com' %>
+        </div>
+
+        <%= f.submit '新規登録', class: "btn btn-primary" %>
+    <% end %>
+</div>
