@@ -27,9 +27,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # font awesome
-# gem 'font-awesome-rails'
-
 gem 'font-awesome-sass', '~> 5.13.0'
+
+# japanize
+gem 'rails-i18n', '~> 6.0.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

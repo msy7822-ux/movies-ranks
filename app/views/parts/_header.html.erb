@@ -1,19 +1,47 @@
 <header class="bg-light"> 
     <ul class="nav mb-5 p-1 pt-2 pb-2">
         <li class="nav-item">
-            <%= link_to users_path, class: 'nav-link text-muted' do %>
-                <%= icon('fas', 'video') %> 映画のランキング
-            <% end %>
-        </li>
-        <li class="nav-item">
             <%= link_to root_path, class: 'nav-link text-muted' do %>
                 <%= icon('fas', 'home') %> ホームに戻る
             <% end %>
         </li>
         <li class="nav-item">
-            <%= link_to '#', class: 'nav-link text-muted' do %>
-                <%= icon('fab', 'accusoft') %> 投票する
+            <%= link_to users_path, class: 'nav-link text-muted' do %>
+                <%= icon('fas', 'video') %> 映画のランキング
             <% end %>
         </li>
+
+        <%# ログインしているときの表示 %>
+        <% if current_user != nil %>
+            <li class="nav-item">
+                <%= link_to '#', class: 'nav-link text-muted' do %>
+                    <%= icon('fab', 'accusoft') %> 投票する
+                <% end %>
+            </li>
+
+            <li class="nav-item">
+                <%= link_to user_path(current_user), class: 'nav-link text-muted' do %>
+                    <i class="fas fa-user"></i> 現在のログインユーザー : <%= current_user.name %>
+                <% end %>
+            </li>
+
+            <li class="nav-item">
+                <%= link_to logout_path, method: :delete, class: 'nav-link text-muted' do %>
+                    <i class="fas fa-sign-out-alt"></i> ログアウト
+                <% end %>
+            </li>
+        <%# ログインしていないときの表示 %>
+        <% else %>
+            <li class="nav-item">
+                <%= link_to login_path, class: 'nav-link text-muted' do %>
+                    <i class="fas fa-sign-in-alt"></i> ログイン
+                <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to signup_path, class: 'nav-link text-muted' do %>
+                    <i class="fas fa-user-plus"></i> 新規登録
+                <% end %>
+            </li>
+        <% end %>
     </ul>
 </header>

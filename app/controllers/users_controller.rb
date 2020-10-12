@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = '新規登録が完了しました'
+      login(@user)
       redirect_to user_url(@user)
     else
       # @user = User.new(user_params) #newで入力した値を代入
