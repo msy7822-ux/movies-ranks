@@ -1,0 +1,13 @@
+<%= provide(:title, '映画一覧') %>
+
+<% if @movies != [] %>
+    <% @movies.each do |movie| %>
+        <%= movie.title %>
+        <br>
+        <%= movie.story %>
+        <br>
+        <% if movie.image? %>
+            <%= image_tag movie.image.url %>
+        <% end %>
+    <% end %>
+<% end %>

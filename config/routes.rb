@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'movies/index'
+  get 'movies/new'
+  post 'movies/create'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

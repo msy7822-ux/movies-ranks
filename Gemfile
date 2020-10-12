@@ -19,18 +19,17 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
 # font awesome
 gem 'font-awesome-sass', '~> 5.13.0'
-
 # japanize
 gem 'rails-i18n', '~> 6.0.0'
+# imageupload
+gem 'carrierwave', '1.2.2'
+gem 'mini_magick', '4.7.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -58,6 +57,7 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

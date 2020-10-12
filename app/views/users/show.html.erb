@@ -4,8 +4,12 @@
 <%= @user.email %>
 <br />
 <% if current_user && current_user == @user %>
-    <%= link_to '編集する', edit_user_url(current_user) %>
-    <%= link_to '削除する', user_url(@user), method: :delete %>
+    <%= link_to '編集する', edit_user_url(current_user), class: 'btn btn-primary' %>
+    <%= link_to '削除する', user_url(@user), method: :delete, class: 'btn btn-primary' %>
+<% end %>
+
+<% if current_user && current_user == @user && @user.email == "msy780022@gmail.com" %>
+    <%= link_to '映画を追加する', movies_new_path, class: 'btn btn-primary' %>
 <% end %>
 
 
