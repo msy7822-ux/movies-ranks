@@ -20,7 +20,9 @@
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>"><%= message %></div>
     <% end %>
-      <%= yield %>
+      <div  style="min-height: 600px;">
+        <%= yield %>
+      </div>
     </div>
 
     <%= render 'parts/footer' %>

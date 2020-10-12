@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by(email: params[:session][:email].downcase)
-        if user && user.authenticate(params[:session][:password])
+        if user && user.authenticate(params[:session][:password]) && params[:session][:password] == params[:session][:password_confirmation]
             login(user)
             flash[:success] = "ログインしました"
             redirect_to user_url(user)

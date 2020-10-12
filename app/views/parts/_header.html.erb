@@ -19,17 +19,24 @@
                 <% end %>
             </li>
 
-            <li class="nav-item">
-                <%= link_to user_path(current_user), class: 'nav-link text-muted' do %>
-                    <i class="fas fa-user"></i> 現在のログインユーザー : <%= current_user.name %>
-                <% end %>
-            </li>
+            <div class="dropdown">
+                <a class="nav-link text-muted dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-file-invoice"></i> アカウント
+                </a>
 
-            <li class="nav-item">
-                <%= link_to logout_path, method: :delete, class: 'nav-link text-muted' do %>
-                    <i class="fas fa-sign-out-alt"></i> ログアウト
-                <% end %>
-            </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li class="dropdown-item">
+                        <%= link_to user_path(current_user), class: 'text-muted' do %>
+                            <i class="fas fa-user"></i> ログインユーザー : <%= current_user.name %>
+                        <% end %>
+                    </li>
+                    <li class="dropdown-item">
+                        <%= link_to logout_path, method: :delete, class: 'text-muted' do %>
+                            <i class="fas fa-sign-out-alt"></i> ログアウト
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
         <%# ログインしていないときの表示 %>
         <% else %>
             <li class="nav-item">

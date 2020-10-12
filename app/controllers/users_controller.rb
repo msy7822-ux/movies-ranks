@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :login?, only: [:edit, :update, :destroy]
+  before_action :right_user?,  only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -25,7 +27,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = '登録情報を更新しました'
+      redirect_to user_url(@user)
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      logout
+      flash[:success] = 'アカウントを削除しました'
+      redirect_to root_path
+    end
   end
 
 
@@ -34,4 +57,21 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
+  # ユーザーがログインしているかどうか
+  def login?
+    if current_user == nil
+      flash[:danger] = 'ログインしてください'
+      redirect_to login_url
+    end
+  end
+
+  def right_user?
+    @user = User.find(params[:id])
+    if @user != current_user
+      flash[:danger] = '権限がありません'
+      redirect_to root_path
+    end
+  end
+
 end

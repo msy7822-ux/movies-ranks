@@ -1,1 +1,13 @@
+<%= provide(:title, @user.name) %>
+
 <%= @user.name %>
+<%= @user.email %>
+<br />
+<% if current_user && current_user == @user %>
+    <%= link_to '編集する', edit_user_url(current_user) %>
+    <%= link_to '削除する', user_url(@user), method: :delete %>
+<% end %>
+
+
+<hr />
+<%= '以下のスペースに投票した映画の一覧を並べる' %>

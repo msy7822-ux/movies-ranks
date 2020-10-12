@@ -1,24 +1,28 @@
 <div class="container">
     <hr>
-    <footer class="mb-5 mt-3">
-        <ul class="list-unstyled">
-            <li>
-                <%= link_to 'https://www.netflix.com/jp/', class: 'text-muted' do %>
+    <footer class="mb-5 mt-5">
+        <div class="d-flex justify-content-center">
+            <p class="text-muted">気になる映画を探そう</p>
+        </div>
+
+        <ul class="list-unstyled d-flex justify-content-center">
+            <li class="ml-3 mr-3">
+                <%= link_to 'https://www.netflix.com/jp/', class: 'text-muted', style: 'text-decoration: none;' do %>
                     <%= icon('fas', 'film') %> Netflex
                 <% end %>
             </li>
-            <li>
-                <%= link_to root_path, class: 'text-muted' do %>
+            <li class="ml-3 mr-3">
+                <%= link_to root_path, class: 'text-muted', style: 'text-decoration: none;' do %>
                     <%= icon('fab', 'amazon') %> Amazon Prime Video
                 <% end %>
             </li>
-            <li>
-                <%= link_to 'https://www.hulu.jp/static/3_7/?cmp=10011&waad=niD5Nih9&gclid=Cj0KCQjw2or8BRCNARIsAC_ppybajmVlqqheTvd59MHUh8TdZehH2-znB_9s5C2uHGXeWsL2ltUzpDsaAqAOEALw_wcB', class: 'text-muted' do %>
+            <li class="ml-3 mr-3">
+                <%= link_to 'https://www.hulu.jp/static/3_7/?cmp=10011&waad=niD5Nih9&gclid=Cj0KCQjw2or8BRCNARIsAC_ppybajmVlqqheTvd59MHUh8TdZehH2-znB_9s5C2uHGXeWsL2ltUzpDsaAqAOEALw_wcB', class: 'text-muted', style: 'text-decoration: none;' do %>
                     <i class="fas fa-h-square"></i> hulu
                 <% end %>
             </li>
-            <li>
-                <%= link_to 'https://www.youtube.com/', class: 'text-muted' do %>
+            <li class="ml-3 mr-3">
+                <%= link_to 'https://www.youtube.com/', class: 'text-muted', style: 'text-decoration: none;' do %>
                     <i class="fab fa-youtube"></i> Youtube
                 <% end %>
             </li>
