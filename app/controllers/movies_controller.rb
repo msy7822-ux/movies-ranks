@@ -2,7 +2,14 @@ class MoviesController < ApplicationController
   before_action :authemnticate?, only: [:new, :create]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.page(params[:page]).per(6).order(:created_at)
+  end
+
+  def show
+    @movie = Movie.find(params[:id])
+    @votes = Vote.where(movie_id: @movie.id)
+    @vote_num = @votes.count
+    @all_vote_num = Vote.all.count
   end
 
   def new
@@ -13,7 +20,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_index_path
+      redirect_to movies_path
     else
       render 'new'
     end

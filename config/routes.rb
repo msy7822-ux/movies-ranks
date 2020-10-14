@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'movies/index'
-  get 'movies/new'
-  post 'movies/create'
+  resources :votes, only: [:new, :create]
+  resources :movies
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

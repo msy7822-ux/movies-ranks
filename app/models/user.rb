@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    has_many :votes
+    has_many :movies, through: :votes
+
     before_save{ self.email = self.email.downcase }
     validates :name, presence:true, length: { maximum: 51 }
     # メールアドレスの有効性に関する正規表現

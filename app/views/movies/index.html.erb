@@ -1,13 +1,22 @@
 <%= provide(:title, '映画一覧') %>
 
-<% if @movies != [] %>
-    <% @movies.each do |movie| %>
-        <%= movie.title %>
-        <br>
-        <%= movie.story %>
-        <br>
-        <% if movie.image? %>
-            <%= image_tag movie.image.url %>
-        <% end %>
+<div class="bg-light mb-4 rounded" style="width: 100%;">
+    <% if @movies != [] %>
+        <div class="d-flex flex-wrap justify-content-around">
+            <% @movies.each do |movie| %>
+                <div class="card mt-4 mb-4" style="width: 18rem;">
+                    <% if movie.image? %>
+                        <%= image_tag movie.image.url, style: 'height: 400px;' %>
+                    <% end %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= movie.title %></h5>
+                        <p class="card-text"><%= text_num_over(movie.story) %></p>
+                    </div>
+                    <%= link_to '詳しく見る', movie_url(movie), class: "m-3 btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
     <% end %>
-<% end %>
+</div>
+
+<%= paginate @movies %>

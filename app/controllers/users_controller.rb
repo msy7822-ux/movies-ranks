@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @votes = Vote.where(id: @user.votes)
+
+    # ユーザーが投票ないしは、コメントした映画情報を格納する配列
+    @movies = movies(@votes)
   end
 
   def new
@@ -58,13 +62,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  # ユーザーがログインしているかどうか
-  def login?
-    if current_user == nil
-      flash[:danger] = 'ログインしてください'
-      redirect_to login_url
-    end
-  end
 
   def right_user?
     @user = User.find(params[:id])

@@ -6,7 +6,7 @@
             <% end %>
         </li>
         <li class="nav-item">
-            <%= link_to movies_index_path, class: 'nav-link text-muted' do %>
+            <%= link_to movies_path, class: 'nav-link text-muted' do %>
                 <%= icon('fas', 'video') %> 映画のランキング
             <% end %>
         </li>
@@ -14,7 +14,7 @@
         <%# ログインしているときの表示 %>
         <% if current_user != nil %>
             <li class="nav-item">
-                <%= link_to '#', class: 'nav-link text-muted' do %>
+                <%= link_to new_vote_path, class: 'nav-link text-muted' do %>
                     <%= icon('fab', 'accusoft') %> 投票する
                 <% end %>
             </li>

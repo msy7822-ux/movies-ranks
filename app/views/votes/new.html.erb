@@ -1,0 +1,19 @@
+<%= provide(:title, '投票') %>
+
+<div class="form bg-light p-5 mt-1 rounded">
+    <%= form_with scope: :vote, url: votes_path, local: true do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.label :movie_id, '映画のタイトル' %>
+        <select class="custom-select mb-3" name="vote[movie_id]">
+            <% @movies.each do |movie| %>
+                <option value="<%= movie.id %>"><%= movie.title %></option>
+            <% end %>
+        </select>
+        <div class="form-group">
+            <%= f.label :comment, 'コメント' %>
+            <%= f.text_area :comment, class: 'form-control', rows: "7" %>
+        </div>
+        
+        <%= f.submit '投票する', class: 'btn btn-primary' %>
+    <% end %>
+</div>

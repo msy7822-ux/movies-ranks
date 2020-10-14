@@ -1,0 +1,19 @@
+<%= provide(:title, @movie.title) %>
+<% if @movie.image? %>
+    <%= image_tag @movie.image.url, style: 'height: 400px;' %>
+<% end %>
+<div class="card-body">
+    <h5 class="card-title"><%= @movie.title %></h5>
+    <p class="card-text"><%= @movie.story %></p>
+</div>
+
+<%= "この映画の投票数と、コメント" %>
+<hr />
+
+<p>この映画への投票数は、<%= @vote_num %> / <%= @all_vote_num %>票</p>
+
+<% if @votes != [] %>
+    <% @votes.each do |vote| %>
+        <%= vote.comment %><br>
+    <% end %>
+<% end %>

@@ -9,9 +9,30 @@
 <% end %>
 
 <% if current_user && current_user == @user && @user.email == "msy780022@gmail.com" %>
-    <%= link_to '映画を追加する', movies_new_path, class: 'btn btn-primary' %>
+    <%= link_to '映画を追加する', new_movie_path, class: 'btn btn-primary' %>
 <% end %>
 
 
 <hr />
-<%= '以下のスペースに投票した映画の一覧を並べる' %>
+<%= '-以下のスペースに投票した映画の一覧を並べる-' %>
+<br>
+<br>
+<div class="bg-light mb-4 rounded" style="width: 100%;">
+    <% if @movies != [] %>
+        <div class="d-flex flex-wrap justify-content-around">
+            <% @movies.each do |movie| %>
+                <div class="card mt-4 mb-4" style="width: 18rem;">
+                    <% if movie.image? %>
+                        <%= image_tag movie.image.url, style: 'height: 400px;' %>
+                    <% end %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= movie.title %></h5>
+                        <p class="card-text"><%= text_num_over(movie.story) %></p>
+                    </div>
+                    <%= link_to '詳しく見る', movie_url(movie), class: "m-3 btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+

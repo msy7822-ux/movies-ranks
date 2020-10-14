@@ -30,6 +30,8 @@ gem 'rails-i18n', '~> 6.0.0'
 # imageupload
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
+# pagenation
+gem 'kaminari', '~> 1.2.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
