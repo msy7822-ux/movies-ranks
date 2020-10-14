@@ -2,13 +2,12 @@ class MoviesController < ApplicationController
   before_action :authemnticate?, only: [:new, :create]
 
   def index
-    @movies = Movie.all.page(params[:page]).per(6).order(:points, :id)
+    @movies = Movie.all.page(params[:page]).per(6).order(points: "desc", id: "desc")
   end
 
   def show
     @movie = Movie.find(params[:id])
     @votes = Vote.where(movie_id: @movie.id)
-    @vote_num = @votes.count
     @all_vote_num = Vote.all.count
   end
 

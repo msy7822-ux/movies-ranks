@@ -10,7 +10,8 @@
 <%= "この映画の投票数と、コメント" %>
 <hr />
 
-<p>この映画への投票数は、<%= @vote_num %> / <%= @all_vote_num %>票</p>
+<p>この映画への投票数は、
+<%= @movie.points != nil ? @movie.points : 0%> / <%= @all_vote_num %>票</p>
 
 
 <div class="bg-light mb-4 rounded p-3" style="width: 100%;">
