@@ -2,6 +2,7 @@
 
 <div class="bg-light mb-4 rounded" style="width: 100%;">
     <% if @movies != [] %>
+        
         <div class="d-flex flex-wrap justify-content-around">
             <% @movies.each do |movie| %>
                 <div class="card mt-4 mb-4" style="width: 18rem;">
@@ -16,6 +17,7 @@
                 </div>
             <% end %>
         </div>
+        
     <% end %>
 </div>
 

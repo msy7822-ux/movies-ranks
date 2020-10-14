@@ -12,8 +12,18 @@
 
 <p>この映画への投票数は、<%= @vote_num %> / <%= @all_vote_num %>票</p>
 
-<% if @votes != [] %>
-    <% @votes.each do |vote| %>
-        <%= vote.comment %><br>
+
+<div class="bg-light mb-4 rounded p-3" style="width: 100%;">
+    <h3>この映画についたコメント</h3>
+    <% if @votes != [] %>
+        <div class="d-flex flex-wrap">
+            <% @votes.each do |vote| %>
+                <% if vote.comment != "" %>
+                    <div class="card mt-4 mb-4 mr-3" style="width: 18rem;">
+                        <%= vote.comment %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
     <% end %>
-<% end %>
+</div>

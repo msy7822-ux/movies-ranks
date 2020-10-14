@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authemnticate?, only: [:new, :create]
 
   def index
-    @movies = Movie.page(params[:page]).per(6).order(:created_at)
+    @movies = Movie.all.page(params[:page]).per(6).order(points: "DESC")
   end
 
   def show
