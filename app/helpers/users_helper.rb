@@ -1,10 +1,10 @@
 module UsersHelper
     def movies(vote_arr)
         # ユーザーが投票ないしは、コメントした映画情報を格納する配列
-        @movies = []
+        movies = []
         vote_arr.each do |vote|
-            @movies << Movie.find(vote.movie_id)
+            movies << Movie.find(vote.movie_id)
         end
-        return @movies
+        return movies
     end
 end
