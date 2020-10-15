@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'homes#home'
   resources :votes, only: [:new, :create]
   resources :movies
 
@@ -10,6 +11,5 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   resources :users
 
-  root to: 'homes#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
