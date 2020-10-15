@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @votes = Vote.where(user_id: @user.votes)
+    @votes = Vote.where(user_id: @user.id)
 
     # ユーザーが投票ないしは、コメントした映画情報を格納する配列
     @movies = movies(@votes)
