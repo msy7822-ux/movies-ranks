@@ -1,15 +1,27 @@
 <%= provide(:title, @movie.title) %>
 <% if @movie.image? %>
-    <%= image_tag @movie.image.url, style: 'height: 400px;' %>
+    <%= image_tag @movie.image.url, style: 'height: 600px;', class: "rounded-lg img-thumbnail mx-auto d-block" %>
+<% else %>
+    <%= image_tag 'no_image.png', style: 'height: 600px; width: 400px;', class: "rounded-lg img-thumbnail mx-auto d-block" %>
 <% end %>
 <div class="card-body">
-    <h5 class="card-title"><%= @movie.title %></h5>
-    <p class="card-text"><%= @movie.story %></p>
+    <div class="border border-dark rounded p-4 mr-2 text-center text-muted mb-3">
+        <h4><i class="fas fa-hand-point-down mr-1"></i> title</h4>
+        <%= @movie.title %>
+    </div>
+
+    <div class="border border-dark rounded p-4 mr-2 text-center text-muted mt-3">
+        <h4><i class="fas fa-hand-point-down mr-1"></i> story</h4>
+        <%= @movie.story %>
+    </div>
 </div>
 
-<%= "この映画の投票数と、コメント" %>
-<hr />
 
+<% if current_user.email == "msy780022@gmail.com" %>
+    <%= link_to '映画を削除する', movie_path(@movie), method: :delete, class: 'btn btn-danger' %>
+<% end %>
+
+<hr />
 <p>この映画への投票数は、
 <%= @movie.points != nil ? @movie.points : 0%> / <%= @all_vote_num %>票</p>
 

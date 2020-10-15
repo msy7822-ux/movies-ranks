@@ -1,26 +1,37 @@
 <%= provide(:title, @user.name) %>
 
-<%= @user.name %>
-<%= @user.email %>
+
+<div class="user bg-light p-4 rounded">
+    <h1 class="text-muted"><i class="fas fa-address-card text-muted mr-1"></i> プロフィール</h1>
+    
+    <div class="d-flex mt-4">
+        <div class="border border-dark rounded p-3 w-50 mr-2 text-center text-muted">
+            <h4><i class="fas fa-file-signature text-muted mr-1"></i>name</h4>
+            <%= @user.name %>
+        </div>
+
+        <div class="border border-dark rounded p-3 w-50 ml-2 text-center text-muted">
+            <h4><i class="fas fa-envelope-square text-muted mr-1"></i> email</h4>
+            <%= @user.email %>
+        </div>
+    </div>
+</div>
+
 <br />
 <% if current_user && current_user == @user %>
     <%= link_to '編集する', edit_user_url(current_user), class: 'btn btn-primary' %>
-    <%= link_to '削除する', user_url(@user), method: :delete, class: 'btn btn-primary' %>
+    <%= link_to '削除する', user_url(@user), method: :delete, data: {confirm: "削除しますか？"} ,class: 'btn btn-danger' %>
 <% end %>
-
-<% if current_user && current_user == @user && @user.email == "msy780022@gmail.com" %>
-    <%= link_to '映画を追加する', new_movie_path, class: 'btn btn-primary' %>
-<% end %>
-
 
 <hr />
-<%= '-以下のスペースに投票した映画の一覧を並べる-' %>
+<%= 'ユーザーが投票した作品の一覧' %>
 <br>
 <br>
 <div class="bg-light mb-4 rounded" style="width: 100%;">
     <% if @movies != [] %>
         <div class="d-flex flex-wrap justify-content-around">
-            <% @movies.each do |movie| %>
+            <%# 同じ映画複数回投票した場合に、重複を防ぐ %>
+            <% @movies.uniq.each do |movie| %>
                 <div class="card mt-4 mb-4" style="width: 18rem;">
                     <% if movie.image? %>
                         <%= image_tag movie.image.url, style: 'height: 400px;' %>
@@ -33,6 +44,8 @@
                 </div>
             <% end %>
         </div>
+    <% else %>
+        <%= 'ユーザーが投票した作品はありません' %>
     <% end %>
 </div>
 

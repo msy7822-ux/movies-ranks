@@ -1,16 +1,16 @@
 <%# titleタグの設定 %>
 <%= provide(:title, "ホーム") %>
 
-<div class="bg-light p-4">
-    <h3>まだ見たことない映画を</h3>
+<div class="home-all bg-light p-2 rounded-lg">
+    <h1 class="font-italic text-center my-3" style="color: rgb(64, 57, 91);">まだ見たことない映画に出会おう</h1>
 
-    <%= image_tag 'movie.jpg', class: 'rounded' %>
-    <p class="lead">あなたの好きな映画に投票してランキングを作りましょう。あなたの投票が誰か新しい「発見」になります。</p>
+    <%= image_tag 'movie.jpg', class: 'rounded-lg img-thumbnail mh-75 w-75 mx-auto d-block' %>
+    <p class="lead font-italic text-center mt-4" style="color: rgb(64, 57, 91);">あなたの好きな映画に投票してランキングを作りましょう。あなたの投票が誰か新しい「発見」になります。</p>
 
     <% if current_user == nil %>
         <hr class="my-4">
-        <p>映画の投票を行うためにはユーザー登録が必要になります。</p>
-        <%= link_to '新規登録', signup_path, class: 'btn btn-primary btn-lg' %>
+        <p class="lead font-italic text-center mt-4 text-danger">映画の投票を行うためにはユーザー登録が必要になります。</p>
+        <%= link_to '新規登録', signup_path, class: 'btn btn-primary w-75 btn-lg mx-auto d-block' %>
     <% end %>
 </div>
 

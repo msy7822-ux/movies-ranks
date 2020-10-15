@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :authemnticate?, only: [:new, :create]
+  before_action :authemnticate?, only: [:new, :create, :destroy]
 
   def index
     @movies = Movie.all.page(params[:page]).per(6).order(points: "desc", created_at: "desc")
@@ -24,6 +24,15 @@ class MoviesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    if @movie.destroy
+      flash[:success] = '映画情報を削除しました'
+      redirect_to movies_path
+    end
+
   end
 
   private

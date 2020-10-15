@@ -1,15 +1,17 @@
 <%= provide(:title, '映画の追加') %>
 
-<div class="form bg-light p-5 mt-1 rounded">
+<div class="form bg-light p-4 mt-1 rounded">
+    <h1 class="text-muted mb-4"><i class="far fa-file-video"></i> 映画追加ページ</h1>
+
     <%= form_with scope: :movie, url: movies_path, local: true do |f| %>
 
         <div class="form-group">
-            <%= f.label :title, 'タイトル' %>
+            <%= f.label :title, 'タイトル', class: "text-muted" %>
             <%= f.text_field :title, class: 'form-control' %>
         </div>
 
         <div class="form-group">
-            <%= f.label :story, 'あらすじ' %>
+            <%= f.label :story, 'あらすじ', class: "text-muted" %>
             <%= f.text_area :story, class: 'form-control', rows: "7" %>
         </div>
 

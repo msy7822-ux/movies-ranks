@@ -1,9 +1,11 @@
 <%= provide(:title, '投票') %>
 
-<div class="form bg-light p-5 mt-1 rounded">
+<div class="form bg-light p-4 mt-1 rounded">
+    <h1 class="text-muted mb-4"><i class="fas fa-bullhorn"></i> 投票ページ</h1>
+
     <%= form_with scope: :vote, url: votes_path, local: true do |f| %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.label :movie_id, '映画のタイトル' %>
+        <%= f.label :movie_id, '映画のタイトル', class: 'text-muted' %>
         <select class="custom-select mb-3" name="vote[movie_id]">
             <option value="">選択してください</option>
             <% @movies.each do |movie| %>
@@ -11,7 +13,7 @@
             <% end %>
         </select>
         <div class="form-group">
-            <%= f.label :comment, 'コメント' %>
+            <%= f.label :comment, 'コメント', class: 'text-muted' %>
             <%= f.text_area :comment, class: 'form-control', rows: "7" %>
         </div>
         

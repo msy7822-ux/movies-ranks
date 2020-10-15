@@ -19,6 +19,14 @@
                 <% end %>
             </li>
 
+            <li class="nav-item">
+                <% if current_user && current_user.email == "msy780022@gmail.com" %>
+                    <%= link_to new_movie_path, class: 'nav-link text-muted' do %>
+                        <i class="fas fa-plus"></i> 映画を追加する
+                    <% end %>
+                <% end %>
+            </li>
+
             <div class="dropdown">
                 <a class="nav-link text-muted dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-file-invoice"></i> アカウント
