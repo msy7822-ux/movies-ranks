@@ -34,7 +34,7 @@
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li class="dropdown-item">
-                        <%= link_to user_path(current_user), class: 'text-muted' do %>
+                        <%= link_to user_path(current_user.id), class: 'text-muted' do %>
                             <i class="fas fa-user"></i> ログインユーザー : <%= current_user.name %>
                         <% end %>
                     </li>
