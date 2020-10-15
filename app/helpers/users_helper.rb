@@ -3,7 +3,7 @@ module UsersHelper
         # ユーザーが投票ないしは、コメントした映画情報を格納する配列
         movies = []
         vote_arr.each do |vote|
-            movies << Movie.where(id: vote.plunk(:movie_id))
+            movies << Movie.where(id: vote.movie_id)
         end
         return movies
     end
