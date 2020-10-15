@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    @movie.points = 0
 
     if @movie.save
       redirect_to movies_path

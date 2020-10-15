@@ -10,7 +10,7 @@ class VotesController < ApplicationController
     if params[:vote][:movie_id] != ""
       # 投票された映画のテーブル（movieテーブル）の投票数のカラム（pointsカラム）に「 +1 」をする
       @movie = Movie.find(params[:vote][:movie_id])
-      if @movie.points.nil?
+      if @movie.points == 0
         @movie.points = 1
       else
         @movie.points += 1
