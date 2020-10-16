@@ -17,7 +17,7 @@
 </div>
 
 
-<% if current_user.email == "msy780022@gmail.com" %>
+<% if current_user && current_user.email == "msy780022@gmail.com" %>
     <%= link_to '映画を削除する', movie_path(@movie), method: :delete, class: 'btn btn-danger' %>
 <% end %>
 
