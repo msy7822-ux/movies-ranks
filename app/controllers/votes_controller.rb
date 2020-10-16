@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
+  before_action :login?, only: [:new, :create]
   # 投票するためにはログインが必須
-  before_action :login?
 
   def new
     @movies = Movie.all
