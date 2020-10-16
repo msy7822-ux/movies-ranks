@@ -12,6 +12,9 @@ class UsersController < ApplicationController
 
     # ユーザーが投票ないしは、コメントした映画情報を格納する配列
     @movies = movies(@votes)
+    # render plain: movies(@votes).each{|m| 
+    #   p m.title
+    # }
   end
 
   def new
