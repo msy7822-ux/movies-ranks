@@ -35,6 +35,8 @@
                 <div class="card mt-4 mb-4" style="width: 18rem;">
                     <% if movie.image? %>
                         <%= image_tag movie.image.url, style: 'height: 400px;' %>
+                    <% else %>
+                        <%= image_tag 'no_image.png', style: 'height: 400px;' %>
                     <% end %>
                     <div class="card-body">
                         <h5 class="card-title"><%= movie.title %></h5>
